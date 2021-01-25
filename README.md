@@ -25,7 +25,7 @@ Git clone https://github.com/SergeyMMedvedev/infra_sp2.git
 
 docker-compose.yaml - файл, предназначенный для управления взаимодействием контейнеров. В нем содержится инструкция по разворачиванию всего проекта, в том числе описание контейнеров, которые будут развернуты. 
 
-Образ для одного из контейнеров (db) - postgres:12.4. Включает в себя все необходимое для работы базы данных проекта.
+Образ для одного из контейнеров (db) - postgres:13.1. Включает в себя все необходимое для работы базы данных проекта.
 
 Образ для второго контейнера (web) будте создан по инструкции, указанной в файле Dockerfile.
 Эта инструкция создает образ на основе базового слоя python:3.8.5. и включает установку всех необходимых зависимостей для работы проекта api_yamdb.
@@ -67,23 +67,30 @@ $ python3 manage.py shell
 $ python manage.py dumpdata > fixtures.json
 ```
 
-Для создания суперпользователя:
+Для создания суперпользователя, выполните команду:
 ```
 $ python manage.py createsuperuser
+```
+и далее укажите 
+```
+Email:
+Username:
+Password:
+Password (again):
 ```
 
 ## Проверка работоспособности
 
 Теперь можно обращаться к API проекта api_yamdb:
 
-* http://127.0.0.1:8000/api/v1/auth/token/
-* http://127.0.0.1:8000/api/v1/users/
-* http://127.0.0.1:8000/api/v1/categories/
-* http://127.0.0.1:8000/api/v1/genres/
-* http://127.0.0.1:8000/api/v1/titles/
-* http://127.0.0.1:8000/api/v1/titles/{title_id}/reviews/
-* http://127.0.0.1:8000/api/v1/titles/{title_id}/reviews/{review_id}/
-* http://127.0.0.1:8000/api/v1/titles/{title_id}/reviews/{review_id}/comments/
+* http://localhost:8000/api/v1/auth/token/
+* http://localhost:8000/api/v1/users/
+* http://localhost:8000/api/v1/categories/
+* http://localhost:8000/api/v1/genres/
+* http://localhost:8000/api/v1/titles/
+* http://localhost:8000/api/v1/titles/{title_id}/reviews/
+* http://localhost:8000/api/v1/titles/{title_id}/reviews/{review_id}/
+* http://localhost:8000/api/v1/titles/{title_id}/reviews/{review_id}/comments/
 
 Подробнее о методах и структурах запросов в см. в проекте api_yamdb.
 
